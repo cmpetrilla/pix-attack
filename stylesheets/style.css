@@ -1,0 +1,73 @@
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+html {
+	width: 100%;
+	height: 100%;
+}
+
+body {
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+	background-color: #000;
+}
+
+a {
+	color: #00B7FF;
+}
+
+svg {
+	width: 100%;
+	height: 100%;
+}
+
+/* dre's stuff */
+.wrapper {
+  width: 90%;
+  margin: 10px auto;
+  max-width: 1010px;
+}
+
+header {
+	height: 42px;
+	text-align: center;
+	padding: 0;
+  border: 3px solid #c69c6d;
+  border-radius: 5px 5px 0 0;
+	background: #c69c6d; /* Old browsers */
+	background: -moz-linear-gradient(top,  #c69c6d 0%, #8c6239 40%, #8c6239 60%, #c69c6d 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#c69c6d), color-stop(40%,#8c6239), color-stop(60%,#8c6239), color-stop(100%,#c69c6d)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #c69c6d 0%,#8c6239 40%,#8c6239 60%,#c69c6d 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  #c69c6d 0%,#8c6239 40%,#8c6239 60%,#c69c6d 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #c69c6d 0%,#8c6239 40%,#8c6239 60%,#c69c6d 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  #c69c6d 0%,#8c6239 40%,#8c6239 60%,#c69c6d 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c69c6d', endColorstr='#c69c6d',GradientType=0 ); /* IE6-9 */
+	margin: 0 auto;
+	width: 840px;
+}
+
+.game-container {
+	border: 3px solid #c69c6d;
+	height: 500px;
+background: #7d7e7d; /* Old browsers */
+background: -moz-radial-gradient(center, ellipse cover,  #7d7e7d 10%, #0e0e0e 90%); /* FF3.6+ */
+background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(10%,#7d7e7d), color-stop(90%,#0e0e0e)); /* Chrome,Safari4+ */
+background: -webkit-radial-gradient(center, ellipse cover,  #7d7e7d 10%,#0e0e0e 90%); /* Chrome10+,Safari5.1+ */
+background: -o-radial-gradient(center, ellipse cover,  #7d7e7d 10%,#0e0e0e 90%); /* Opera 12+ */
+background: -ms-radial-gradient(center, ellipse cover,  #7d7e7d 10%,#0e0e0e 90%); /* IE10+ */
+background: radial-gradient(ellipse at center,  #7d7e7d 10%,#0e0e0e 90%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7d7e7d', endColorstr='#0e0e0e',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+
+	margin: 0 auto;
+	width: 840px;
+}
+
+footer {
+	background-color: #000;
+	height: 275px;
+}
