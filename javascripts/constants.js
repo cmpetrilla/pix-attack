@@ -1,7 +1,9 @@
 var ROOT_DOM_NODE = document.getElementById('svgRoot');
 
-var GAME_WIDTH = ROOT_DOM_NODE.offsetWidth;
-var GAME_HEIGHT = ROOT_DOM_NODE.offsetHeight;
+var gameViewport = ROOT_DOM_NODE.getBoundingClientRect();
+
+var GAME_WIDTH = gameViewport.width;
+var GAME_HEIGHT = gameViewport.height;
 
 var GAME_SPEED = 60;
 
