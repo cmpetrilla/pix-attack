@@ -65,19 +65,19 @@ export default class Game  {
 	};
 
 	setUpListeners() {
-		document.getElementById('body').addEventListener('keydown', function(event) {
+		document.getElementById('body').addEventListener('keydown', (event) => {
 			if (this.keysDown.indexOf(event.keyCode) === -1) {
 				this.keysDown.push(event.keyCode);
 			}
-		}.bind(this));
+		});
 
-		document.getElementById('body').addEventListener('keyup', function(event) {
+		document.getElementById('body').addEventListener('keyup', (event) => {
 			let index = this.keysDown.indexOf(event.keyCode);
 
 			if (index !== -1) {
 				this.keysDown.splice(index, 1);
 			}
-		}.bind(this));
+		});
 	};
 
 	processKeys() {
