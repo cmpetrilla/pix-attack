@@ -1,5 +1,5 @@
 import constants from './constants.js';
-import MovingObject from './moving-object.js';
+import MovingObject from './MovingObject.js';
 
 export default class Bullet extends MovingObject {
 	constructor(x, y, h, w) {

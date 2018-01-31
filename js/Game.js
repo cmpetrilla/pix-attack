@@ -1,7 +1,7 @@
 import constants from './constants.js';
-import Runner from './runner.js';
-import Enemy from './enemy.js';
-import Bullet from './bullet.js';
+import Runner from './RunnerMovingObject.js';
+import Enemy from './EnemyMovingObject.js';
+import Bullet from './BulletMovingObject.js';
 
 export default class Game  {
 	constructor() {
