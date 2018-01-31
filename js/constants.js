@@ -1,4 +1,4 @@
-const ROOT_ELEMENT = document.getElementById('svgRoot');
+const ROOT_ELEMENT = document.getElementById('gameRoot');
 const GAME_VIEWPORT_ELEMENT = ROOT_ELEMENT.getBoundingClientRect();
 
 export default {
