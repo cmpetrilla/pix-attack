@@ -3,8 +3,7 @@ import MovingObject from './MovingObject.js';
 
 export default class Runner extends MovingObject {
 	constructor(y) {
-		const timestamp = new Date().getTime();
-		super(`runner${timestamp}`, 0, y, constants.RUNNER.HEIGHT, constants.RUNNER.WIDTH, constants.RUNNER.COLOR, constants.RUNNER.STEP);
+		super(0, y, constants.RUNNER.HEIGHT, constants.RUNNER.WIDTH, constants.RUNNER.COLOR, constants.RUNNER.STEP);
 	}
 
 	stepLeft() {

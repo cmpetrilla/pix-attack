@@ -1,20 +1,21 @@
 import constants from './constants.js';
 
 export default class MovingObject {
-	constructor(id, x, y, h, w, color, step) {
-		this.id = id;
+	constructor(x, y, h, w, color, step) {
 		this.x = x;
 		this.y = y;
 		this.h = h;
 		this.w = w;
 		this.color = color;
 		this.step = step;
+		this.id = 'movingObject' + new Date().getTime(); // id attribute can't start with a number
 
 		this.render();
 	}
 
 	render() {
 		let svgNode = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+
 		svgNode.setAttribute('x', this.x);
 		svgNode.setAttribute('y', this.y);
 		svgNode.setAttribute('width', this.w);

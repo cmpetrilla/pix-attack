@@ -20,7 +20,7 @@ export default class Game  {
 	};
 
 	mainloop() {
-		setInterval(function() {
+		setInterval(() => {
 			let timestamp = new Date().getTime();
 
 			this.processKeys();
@@ -61,7 +61,7 @@ export default class Game  {
 				this.enemies.push(new Enemy());
 				this.lastEnemy = timestamp;
 			}
-		}.bind(this), constants.GAME.SPEED);
+		}, constants.GAME.SPEED);
 	};
 
 	setUpListeners() {
