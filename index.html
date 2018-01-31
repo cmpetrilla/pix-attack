@@ -1,27 +1,33 @@
 <!doctype html>
-<html class="no-js" lang="">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>PIX ATTAX &copy;2015</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="stylesheets/style.css">
-        <script src="https://google.github.io/traceur-compiler/bin/traceur.js"></script>
-        <script type="module">
-            import Game from './js/game.js';
-            new Game();
-        </script>
-    </head>
-    <body id="body">
-        <div class="wrapper">
-          <div class="main-container">
-            <header><img src="images/logo.png"/></header>
-            <div class="game-container">
-              <svg id="svgRoot"></svg>
-            </div>
-            <footer><img src="images/console.png"/></footer>
-          </div>
-        </div>
-    </body>
+<html class="no-js" lang="en-us">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="x-ua-compatible" content="ie=edge">
+		<title>PIX ATTAX &copy;2018</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link href="https://fonts.googleapis.com/css?family=Dhurjati" rel="stylesheet">
+		<link rel="stylesheet" href="stylesheets/style.css">
+		<script src="https://google.github.io/traceur-compiler/bin/traceur.js"></script>
+	</head>
+	<body id="body" class="o-flexbox">
+		<div class="c-instructions">
+			<header>
+				<h1 class="c-instructions__heading1 u-center">PIX ATTACK</h1>
+			</header>
+			<p class="c-instructions__text">Shoot the enemies before they reach you!</p>
+			<h2 class="c-instructions__heading2">Controls</h2>
+			<ul class="u-unstyled-list">
+				<li><span class="c-instructions__control-label u-center">&larr;</span> : move left</li>
+				<li><span class="c-instructions__control-label u-center">&rarr;</span> : move right</li>
+				<li><span class="c-instructions__control-label u-center">[space]</span> : shoot</li>
+			</ul>
+		</div>
+		<div class="c-game-container">
+			<svg id="gameRoot" class="c-game-root"></svg>
+		</div>
+		<!--<script type="module">-->
+			<!--import Game from './js/game.js';-->
+			<!--new Game();-->
+		<!--</script>-->
+	</body>
 </html>
