@@ -7,6 +7,11 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="stylesheets/style.css">
+        <script src="https://google.github.io/traceur-compiler/bin/traceur.js"></script>
+        <script type="module">
+            import Game from './js/game.js';
+            new Game();
+        </script>
     </head>
     <body id="body">
         <div class="wrapper">
@@ -18,13 +23,5 @@
             <footer><img src="images/console.png"/></footer>
           </div>
         </div>
-
-        <script src="javascripts/constants.js"></script>
-        <script src="javascripts/game-object.js"></script>
-        <script src="javascripts/moving-object.js"></script>
-        <script src="javascripts/runner.js"></script>
-        <script src="javascripts/bullet.js"></script>
-        <script src="javascripts/enemy.js"></script>
-        <script src="javascripts/main.js"></script>
     </body>
 </html>
