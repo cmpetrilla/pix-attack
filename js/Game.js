@@ -16,62 +16,60 @@ export default class Game  {
 
 		this.setUpListeners();
 
-		this.mainloop();
+		setInterval(this.draw.bind(this), constants.GAME.SPEED);
 	};
 
-	mainloop() {
-		setInterval(() => {
-			let timestamp = new Date().getTime();
+	draw() {
+		let timestamp = new Date().getTime();
 
-			this.processKeys();
+		this.processKeys();
 
-			if (this.runner.doUpdate) {
-				this.runner.update();
-			}
+		if (this.runner.doUpdate) {
+			this.runner.update();
+		}
 
-			// test collisions
-			for (let i = this.bullets.length - 1; i >= 0; i--) {
-				for (let j = this.enemies.length - 1; j >= 0; j--) {
-					if (this.testCollision(this.bullets[i], this.enemies[j])) {
-						this.bullets[i].doDestroy = true;
-						this.enemies[j].doDestroy = true;
-					}
-				}
-
-				if (this.bullets[i].doUpdate) {
-					this.bullets[i].update();
-				}
-
-				if (this.bullets[i].doDestroy) {
-					this.bullets.splice(i, 1)[0].destroy();
+		// test collisions
+		for (let i = this.bullets.length - 1; i >= 0; i--) {
+			for (let j = this.enemies.length - 1; j >= 0; j--) {
+				if (this.testCollision(this.bullets[i], this.enemies[j])) {
+					this.bullets[i].doDestroy = true;
+					this.enemies[j].doDestroy = true;
 				}
 			}
 
-			for (let i = this.enemies.length - 1; i >= 0; i--) {
-				if (this.enemies[i].doUpdate) {
-					this.enemies[i].update();
-				}
-
-				if (this.enemies[i].doDestroy) {
-					this.enemies.splice(i, 1)[0].destroy();
-				}
+			if (this.bullets[i].doUpdate) {
+				this.bullets[i].update();
 			}
 
-			if (timestamp > this.lastEnemy + 2000) {
-				this.enemies.push(new Enemy());
-				this.lastEnemy = timestamp;
+			if (this.bullets[i].doDestroy) {
+				this.bullets.splice(i, 1)[0].destroy();
 			}
-		}, constants.GAME.SPEED);
+		}
+
+		for (let i = this.enemies.length - 1; i >= 0; i--) {
+			if (this.enemies[i].doUpdate) {
+				this.enemies[i].update();
+			}
+
+			if (this.enemies[i].doDestroy) {
+				this.enemies.splice(i, 1)[0].destroy();
+			}
+		}
+
+		if (timestamp > this.lastEnemy + 2000) {
+			this.enemies.push(new Enemy());
+			this.lastEnemy = timestamp;
+		}
 	};
 
 	setUpListeners() {
-		document.getElementById('body').addEventListener('keydown', (event) => {
+		document.addEventListener('keydown', (event) => {
 			if (this.keysDown.indexOf(event.keyCode) === -1) {
 				this.keysDown.push(event.keyCode);
 			}
 		});
 
-		document.getElementById('body').addEventListener('keyup', (event) => {
+		document.addEventListener('keyup', (event) => {
 			let index = this.keysDown.indexOf(event.keyCode);
 
 			if (index !== -1) {
