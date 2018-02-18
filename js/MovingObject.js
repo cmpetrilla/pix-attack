@@ -1,5 +1,7 @@
+import settings from './settings.js';
+
 export default class MovingObject {
-	constructor(gameRoot, type, x, y, h, w, color, step) {
+	constructor(type, x, y, h, w, color, step) {
 		this.x = x;
 		this.y = y;
 		this.h = h;
@@ -9,10 +11,10 @@ export default class MovingObject {
 		this.id = type + new Date().getTime();
 		this.destroyed = false;
 
-		this.render(gameRoot);
+		this.render();
 	}
 
-	render(gameRoot) {
+	render() {
 		let svgNode = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
 
 		svgNode.setAttribute('x', this.x);
@@ -22,7 +24,7 @@ export default class MovingObject {
 		svgNode.setAttribute('fill', this.color);
 		svgNode.setAttribute('id', this.id);
 
-		gameRoot.appendChild(svgNode);
+		settings.ROOT_ELEMENT.appendChild(svgNode);
 
 		this.domElement = document.getElementById(this.id);
 	}

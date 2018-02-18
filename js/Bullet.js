@@ -1,9 +1,9 @@
-import constants from './constants.js';
+import settings from './settings.js';
 import MovingObject from './MovingObject.js';
 
 export default class Bullet extends MovingObject {
-	constructor(gameRoot, x, y) {
-		super(gameRoot, 'bullet', x, y, constants.BULLET.HEIGHT, constants.BULLET.WIDTH, constants.BULLET.COLOR, constants.BULLET.STEP);
+	constructor(x, y) {
+		super('bullet', x, y, settings.BULLET.HEIGHT, settings.BULLET.WIDTH, settings.BULLET.COLOR, settings.BULLET.STEP);
 	}
 
 	update() {

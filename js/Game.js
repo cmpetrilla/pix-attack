@@ -1,12 +1,17 @@
-import constants from './constants.js';
+import settings from './settings.js';
 import Runner from './Runner.js';
 import Enemy from './Enemy.js';
 import Bullet from './Bullet.js';
 
 export default class Game  {
 	constructor(gameRoot) {
-		this.gameRoot = gameRoot;
-		this.runner = new Runner(gameRoot);
+		// Update game settings
+		let boundingClientRect = gameRoot.getBoundingClientRect();
+		settings.ROOT_ELEMENT = gameRoot;
+		settings.GAME.HEIGHT = boundingClientRect.height;
+		settings.GAME.WIDTH = boundingClientRect.width;
+
+		this.runner = new Runner();
 		this.bullets = [];
 		this.enemies = [];
 		this.keysDown = [];
@@ -16,7 +21,7 @@ export default class Game  {
 
 		this.setUpListeners();
 
-		setInterval(this.draw.bind(this), constants.GAME.SPEED);
+		setInterval(this.draw.bind(this), settings.GAME.SPEED);
 	};
 
 	draw() {
@@ -31,7 +36,7 @@ export default class Game  {
 		this.removeDestroyedObjects();
 
 		if (this.timestamp > this.lastEnemy + 2000) {
-			this.enemies.push(new Enemy(this.gameRoot));
+			this.enemies.push(new Enemy());
 			this.lastEnemy = this.timestamp;
 		}
 	};
@@ -90,15 +95,15 @@ export default class Game  {
 	processKeys() {
 		for (let i = 0; i < this.keysDown.length; i++) {
 			switch (this.keysDown[i]) {
-				case constants.INPUTS.LEFT_ARROW:
+				case settings.INPUTS.LEFT_ARROW:
 					this.runner.stepLeft();
 					break;
-				case constants.INPUTS.RIGHT_ARROW:
+				case settings.INPUTS.RIGHT_ARROW:
 					this.runner.stepRight();
 					break;
-				case constants.INPUTS.SPACE:
+				case settings.INPUTS.SPACE:
 					if (this.timestamp > this.lastBullet + 500) {
-						let bullet = new Bullet(this.gameRoot, this.runner.x + (this.runner.w / 2) - (constants.BULLET.WIDTH / 2), this.runner.y - constants.BULLET.HEIGHT);
+						let bullet = new Bullet(this.runner.x + (this.runner.w / 2) - (settings.BULLET.WIDTH / 2), this.runner.y - settings.BULLET.HEIGHT);
 						this.bullets.push(bullet);
 						this.lastBullet = this.timestamp;
 					}

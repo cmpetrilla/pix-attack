@@ -1,11 +1,8 @@
-const ROOT_ELEMENT = document.getElementById('gameRoot');
-const GAME_VIEWPORT_ELEMENT = ROOT_ELEMENT.getBoundingClientRect();
-
 export default {
-	ROOT_ELEMENT,
+	ROOT_ELEMENT: {}, // Reset when game initializes
 	GAME: {
-		WIDTH: GAME_VIEWPORT_ELEMENT.width,
-		HEIGHT: GAME_VIEWPORT_ELEMENT.height,
+		WIDTH: 0, // Reset when game initializes
+		HEIGHT: 0, // Reset when game initializes
 		SPEED: 60
 	},
 	INPUTS: {
@@ -31,4 +28,5 @@ export default {
 		COLOR: '#d2151c',
 		STEP: 10
 	}
-};
+}
+
