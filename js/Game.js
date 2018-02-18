@@ -12,6 +12,7 @@ export default class Game  {
 		this.keysDown = [];
 		this.lastBullet = 0;
 		this.lastEnemy = 0;
+		this.timestamp = 0;
 
 		this.setUpListeners();
 
@@ -19,7 +20,7 @@ export default class Game  {
 	};
 
 	draw() {
-		let timestamp = new Date().getTime();
+		this.timestamp = new Date().getTime();
 
 		this.processKeys();
 
@@ -29,9 +30,9 @@ export default class Game  {
 
 		this.removeDestroyedObjects();
 
-		if (timestamp > this.lastEnemy + 2000) {
+		if (this.timestamp > this.lastEnemy + 2000) {
 			this.enemies.push(new Enemy(this.gameRoot));
-			this.lastEnemy = timestamp;
+			this.lastEnemy = this.timestamp;
 		}
 	};
 
@@ -98,12 +99,10 @@ export default class Game  {
 					this.runner.stepRight();
 					break;
 				case constants.INPUTS.SPACE:
-					let timestamp = new Date().getTime();
-
-					if (timestamp > this.lastBullet + 500) {
+					if (this.timestamp > this.lastBullet + 500) {
 						let bullet = new Bullet(this.gameRoot, this.runner.x + (this.runner.w / 2) - (constants.BULLET.WIDTH / 2), this.runner.y - constants.BULLET.HEIGHT);
 						this.bullets.push(bullet);
-						this.lastBullet = timestamp;
+						this.lastBullet = this.timestamp;
 					}
 					break;
 			}
