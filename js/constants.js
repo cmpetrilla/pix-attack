@@ -6,8 +6,7 @@ export default {
 	GAME: {
 		WIDTH: GAME_VIEWPORT_ELEMENT.width,
 		HEIGHT: GAME_VIEWPORT_ELEMENT.height,
-		SPEED: 60,
-		BUFFER: 20
+		SPEED: 60
 	},
 	INPUTS: {
 		LEFT_ARROW: 37,
