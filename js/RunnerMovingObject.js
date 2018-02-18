@@ -2,8 +2,8 @@ import constants from './constants.js';
 import MovingObject from './MovingObject.js';
 
 export default class Runner extends MovingObject {
-	constructor(y) {
-		super('runner', 0, y, constants.RUNNER.HEIGHT, constants.RUNNER.WIDTH, constants.RUNNER.COLOR, constants.RUNNER.STEP);
+	constructor(gameRoot) {
+		super(gameRoot, 'runner', 0, gameRoot.clientHeight - constants.RUNNER.HEIGHT, constants.RUNNER.HEIGHT, constants.RUNNER.WIDTH, constants.RUNNER.COLOR, constants.RUNNER.STEP);
 	}
 
 	stepLeft() {

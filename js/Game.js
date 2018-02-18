@@ -4,10 +4,9 @@ import Enemy from './EnemyMovingObject.js';
 import Bullet from './BulletMovingObject.js';
 
 export default class Game  {
-	constructor() {
-		let y = constants.ROOT_ELEMENT.clientHeight - constants.RUNNER.HEIGHT;
-
-		this.runner = new Runner(y);
+	constructor(gameRoot) {
+		this.gameRoot = gameRoot;
+		this.runner = new Runner(gameRoot);
 		this.bullets = [];
 		this.enemies = [];
 		this.keysDown = [];
@@ -31,7 +30,7 @@ export default class Game  {
 		this.removeDestroyedObjects();
 
 		if (timestamp > this.lastEnemy + 2000) {
-			this.enemies.push(new Enemy());
+			this.enemies.push(new Enemy(this.gameRoot));
 			this.lastEnemy = timestamp;
 		}
 	};
@@ -102,7 +101,7 @@ export default class Game  {
 					let timestamp = new Date().getTime();
 
 					if (timestamp > this.lastBullet + 500) {
-						let bullet = new Bullet(this.runner.x + (this.runner.w / 2) - (constants.BULLET.WIDTH / 2), this.runner.y - constants.BULLET.HEIGHT);
+						let bullet = new Bullet(this.gameRoot, this.runner.x + (this.runner.w / 2) - (constants.BULLET.WIDTH / 2), this.runner.y - constants.BULLET.HEIGHT);
 						this.bullets.push(bullet);
 						this.lastBullet = timestamp;
 					}

@@ -1,7 +1,5 @@
-import constants from './constants.js';
-
 export default class MovingObject {
-	constructor(type, x, y, h, w, color, step) {
+	constructor(gameRoot, type, x, y, h, w, color, step) {
 		this.x = x;
 		this.y = y;
 		this.h = h;
@@ -11,10 +9,10 @@ export default class MovingObject {
 		this.id = type + new Date().getTime(); // id attribute can't start with a number
 		this.destroyed = false;
 
-		this.render();
+		this.render(gameRoot);
 	}
 
-	render() {
+	render(gameRoot) {
 		let svgNode = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
 
 		svgNode.setAttribute('x', this.x);
@@ -24,7 +22,7 @@ export default class MovingObject {
 		svgNode.setAttribute('fill', this.color);
 		svgNode.setAttribute('id', this.id);
 
-		constants.ROOT_ELEMENT.appendChild(svgNode);
+		gameRoot.appendChild(svgNode);
 
 		this.domElement = document.getElementById(this.id);
 	}
