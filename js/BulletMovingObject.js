@@ -3,7 +3,7 @@ import MovingObject from './MovingObject.js';
 
 export default class Bullet extends MovingObject {
 	constructor(x, y) {
-		super(x, y, constants.BULLET.HEIGHT, constants.BULLET.WIDTH, constants.BULLET.COLOR, constants.BULLET.STEP);
+		super('bullet', x, y, constants.BULLET.HEIGHT, constants.BULLET.WIDTH, constants.BULLET.COLOR, constants.BULLET.STEP);
 	}
 
 	update() {

@@ -33,7 +33,6 @@ export default class Game  {
 		if (timestamp > this.lastEnemy + 2000) {
 			this.enemies.push(new Enemy());
 			this.lastEnemy = timestamp;
-
 		}
 	};
 

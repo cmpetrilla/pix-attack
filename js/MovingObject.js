@@ -1,14 +1,14 @@
 import constants from './constants.js';
 
 export default class MovingObject {
-	constructor(x, y, h, w, color, step) {
+	constructor(type, x, y, h, w, color, step) {
 		this.x = x;
 		this.y = y;
 		this.h = h;
 		this.w = w;
 		this.color = color;
 		this.step = step;
-		this.id = 'movingObject' + new Date().getTime(); // id attribute can't start with a number
+		this.id = type + new Date().getTime(); // id attribute can't start with a number
 		this.doDestroy = false;
 
 		this.render();
