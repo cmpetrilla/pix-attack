@@ -9,6 +9,7 @@ export default class MovingObject {
 		this.color = color;
 		this.step = step;
 		this.id = 'movingObject' + new Date().getTime(); // id attribute can't start with a number
+		this.doDestroy = false;
 
 		this.render();
 	}
@@ -31,12 +32,9 @@ export default class MovingObject {
 	update() {
 		this.domElement.setAttribute('x', this.x);
 		this.domElement.setAttribute('y', this.y);
-		this.doUpdate = false;
 	}
 
 	destroy() {
-		constants.ROOT_ELEMENT.removeChild(this.domElement);
-		this.doDestroy = true;
-		this.doUpdate = false;
+		this.domElement.remove();
 	}
 };

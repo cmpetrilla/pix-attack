@@ -24,41 +24,53 @@ export default class Game  {
 
 		this.processKeys();
 
-		if (this.runner.doUpdate) {
-			this.runner.update();
-		}
+		this.updateMovingObjects();
 
-		// test collisions
-		for (let i = this.bullets.length - 1; i >= 0; i--) {
-			for (let j = this.enemies.length - 1; j >= 0; j--) {
-				if (this.testCollision(this.bullets[i], this.enemies[j])) {
-					this.bullets[i].doDestroy = true;
-					this.enemies[j].doDestroy = true;
+		this.testCollisions();
+
+		this.removeDestroyedObjects();
+
+		if (timestamp > this.lastEnemy + 2000) {
+			this.enemies.push(new Enemy());
+			this.lastEnemy = timestamp;
+
+		}
+	};
+
+	testCollisions() {
+		for (let enemy of this.enemies) {
+			for (let bullet of this.bullets) {
+				if (this.testCollision(bullet, enemy)) {
+					bullet.doDestroy = true;
+					enemy.doDestroy = true;
 				}
 			}
+		}
+	}
 
-			if (this.bullets[i].doUpdate) {
-				this.bullets[i].update();
-			}
-
+	removeDestroyedObjects() {
+		for (let i = this.bullets.length - 1; i >= 0; i--) {
 			if (this.bullets[i].doDestroy) {
 				this.bullets.splice(i, 1)[0].destroy();
 			}
 		}
 
 		for (let i = this.enemies.length - 1; i >= 0; i--) {
-			if (this.enemies[i].doUpdate) {
-				this.enemies[i].update();
-			}
-
 			if (this.enemies[i].doDestroy) {
 				this.enemies.splice(i, 1)[0].destroy();
 			}
 		}
+	}
 
-		if (timestamp > this.lastEnemy + 2000) {
-			this.enemies.push(new Enemy());
-			this.lastEnemy = timestamp;
+	updateMovingObjects() {
+		// this.runner.update();
+
+		for (let enemy of this.enemies) {
+			enemy.update();
+		}
+
+		for (let bullet of this.bullets) {
+			bullet.update();
 		}
 	};
 

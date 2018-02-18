@@ -6,20 +6,15 @@ export default class Enemy extends MovingObject {
 		let randomXPosition = Math.random() * (constants.GAME.WIDTH  - constants.ENEMY.WIDTH);
 
 		super(randomXPosition, 0, constants.ENEMY.HEIGHT, constants.ENEMY.WIDTH, constants.ENEMY.COLOR, constants.ENEMY.STEP);
-
-		this.startMoving();
 	}
 
-	startMoving() {
-		setInterval(() => {
+	update() {
+		if (this.y >= constants.GAME.HEIGHT) {
+			// game over
+			this.doDestroy = true;
+		} else {
 			this.y += this.step;
-			this.doUpdate = true;
-
-			if (this.y > constants.GAME.HEIGHT)
-			{
-				// game over
-				// this.destroy();
-			}
-		}, constants.ENEMY.SPEED);
+			super.update();
+		}
 	}
 };

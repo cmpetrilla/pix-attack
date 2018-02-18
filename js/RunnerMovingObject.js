@@ -13,7 +13,7 @@ export default class Runner extends MovingObject {
 			this.x = 0;
 		}
 
-		this.doUpdate = true;
+		super.update();
 	}
 
 	stepRight() {
@@ -23,6 +23,6 @@ export default class Runner extends MovingObject {
 			this.x = constants.GAME.WIDTH - this.w;
 		}
 
-		this.doUpdate = true;
+		super.update();
 	}
 }
