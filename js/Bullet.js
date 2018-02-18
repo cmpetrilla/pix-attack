@@ -1,9 +1,10 @@
+import gamePieces from './gamePieces.js';
 import settings from './settings.js';
 import MovingObject from './MovingObject.js';
 
 export default class Bullet extends MovingObject {
-	constructor(x, y) {
-		super('bullet', x, y, settings.BULLET.HEIGHT, settings.BULLET.WIDTH, settings.BULLET.COLOR, settings.BULLET.STEP);
+	constructor() {
+		super('bullet', gamePieces.runner.x + (gamePieces.runner.w / 2) - (settings.BULLET.WIDTH / 2), gamePieces.runner.y - settings.BULLET.HEIGHT, settings.BULLET.HEIGHT, settings.BULLET.WIDTH, settings.BULLET.COLOR, settings.BULLET.STEP);
 	}
 
 	update() {

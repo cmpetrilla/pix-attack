@@ -1,4 +1,5 @@
 import settings from './settings.js';
+import gamePieces from './gamePieces.js';
 import Runner from './Runner.js';
 import Enemy from './Enemy.js';
 import Bullet from './Bullet.js';
@@ -11,9 +12,8 @@ export default class Game  {
 		settings.GAME.HEIGHT = boundingClientRect.height;
 		settings.GAME.WIDTH = boundingClientRect.width;
 
-		this.runner = new Runner();
-		this.bullets = [];
-		this.enemies = [];
+		gamePieces.runner = new Runner();
+
 		this.keysDown = [];
 		this.lastBullet = 0;
 		this.lastEnemy = 0;
@@ -36,14 +36,14 @@ export default class Game  {
 		this.removeDestroyedObjects();
 
 		if (this.timestamp > this.lastEnemy + 2000) {
-			this.enemies.push(new Enemy());
+			gamePieces.enemies.push(new Enemy());
 			this.lastEnemy = this.timestamp;
 		}
 	};
 
 	testCollisions() {
-		for (let enemy of this.enemies) {
-			for (let bullet of this.bullets) {
+		for (let enemy of gamePieces.enemies) {
+			for (let bullet of gamePieces.bullets) {
 				if (this.testCollision(bullet, enemy)) {
 					bullet.destroy();
 					enemy.destroy();
@@ -53,25 +53,25 @@ export default class Game  {
 	}
 
 	removeDestroyedObjects() {
-		for (let i = this.bullets.length - 1; i >= 0; i--) {
-			if (this.bullets[i].destroyed) {
-				this.bullets.splice(i, 1);
+		for (let i = gamePieces.bullets.length - 1; i >= 0; i--) {
+			if (gamePieces.bullets[i].destroyed) {
+				gamePieces.bullets.splice(i, 1);
 			}
 		}
 
-		for (let i = this.enemies.length - 1; i >= 0; i--) {
-			if (this.enemies[i].destroyed) {
-				this.enemies.splice(i, 1);
+		for (let i = gamePieces.enemies.length - 1; i >= 0; i--) {
+			if (gamePieces.enemies[i].destroyed) {
+				gamePieces.enemies.splice(i, 1);
 			}
 		}
 	}
 
 	updateMovingObjects() {
-		for (let enemy of this.enemies) {
+		for (let enemy of gamePieces.enemies) {
 			enemy.update();
 		}
 
-		for (let bullet of this.bullets) {
+		for (let bullet of gamePieces.bullets) {
 			bullet.update();
 		}
 	};
@@ -96,15 +96,14 @@ export default class Game  {
 		for (let i = 0; i < this.keysDown.length; i++) {
 			switch (this.keysDown[i]) {
 				case settings.INPUTS.LEFT_ARROW:
-					this.runner.stepLeft();
+					gamePieces.runner.stepLeft();
 					break;
 				case settings.INPUTS.RIGHT_ARROW:
-					this.runner.stepRight();
+					gamePieces.runner.stepRight();
 					break;
 				case settings.INPUTS.SPACE:
 					if (this.timestamp > this.lastBullet + 500) {
-						let bullet = new Bullet(this.runner.x + (this.runner.w / 2) - (settings.BULLET.WIDTH / 2), this.runner.y - settings.BULLET.HEIGHT);
-						this.bullets.push(bullet);
+						gamePieces.bullets.push(new Bullet());
 						this.lastBullet = this.timestamp;
 					}
 					break;
