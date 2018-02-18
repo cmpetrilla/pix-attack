@@ -6,7 +6,7 @@ export default class MovingObject {
 		this.w = w;
 		this.color = color;
 		this.step = step;
-		this.id = type + new Date().getTime(); // id attribute can't start with a number
+		this.id = type + new Date().getTime();
 		this.destroyed = false;
 
 		this.render(gameRoot);
