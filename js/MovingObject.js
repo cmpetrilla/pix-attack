@@ -38,4 +38,4 @@ export default class MovingObject {
 		this.domElement.remove();
 		this.destroyed = true;
 	}
-};
+}

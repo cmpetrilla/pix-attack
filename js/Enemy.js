@@ -17,4 +17,4 @@ export default class Enemy extends MovingObject {
 			super.update();
 		}
 	}
-};
+}

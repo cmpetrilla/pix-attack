@@ -22,7 +22,7 @@ export default class Game  {
 		this.setUpListeners();
 
 		setInterval(this.draw.bind(this), settings.GAME.SPEED);
-	};
+	}
 
 	draw() {
 		this.timestamp = new Date().getTime();
@@ -39,7 +39,7 @@ export default class Game  {
 			gamePieces.enemies.push(new Enemy());
 			this.lastEnemy = this.timestamp;
 		}
-	};
+	}
 
 	testCollisions() {
 		for (let enemy of gamePieces.enemies) {
@@ -74,7 +74,7 @@ export default class Game  {
 		for (let bullet of gamePieces.bullets) {
 			bullet.update();
 		}
-	};
+	}
 
 	setUpListeners() {
 		document.addEventListener('keydown', (event) => {
@@ -90,7 +90,7 @@ export default class Game  {
 				this.keysDown.splice(index, 1);
 			}
 		});
-	};
+	}
 
 	processKeys() {
 		for (let i = 0; i < this.keysDown.length; i++) {
@@ -109,7 +109,7 @@ export default class Game  {
 					break;
 			}
 		}
-	};
+	}
 
 	testCollision(obj1, obj2) {
 		let x1 = obj1.x;
@@ -122,5 +122,5 @@ export default class Game  {
 		let h2 = obj2.h;
 
 		return (x2 - w1 < x1 && x1 < x2 + w2 + w1) && (y1 < y2 + h2);
-	};
+	}
 }
