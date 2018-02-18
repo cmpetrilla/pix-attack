@@ -23,14 +23,12 @@ export default {
 		WIDTH: 6,
 		HEIGHT: 15,
 		STEP: 10,
-		COLOR: '#acacac',
-		SPEED: 60
+		COLOR: '#acacac'
 	},
 	ENEMY: {
 		WIDTH: 20,
 		HEIGHT: 20,
 		COLOR: '#d2151c',
-		STEP: 10,
-		SPEED: 60
+		STEP: 10
 	}
 };
