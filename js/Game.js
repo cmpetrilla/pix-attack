@@ -40,8 +40,8 @@ export default class Game  {
 		for (let enemy of this.enemies) {
 			for (let bullet of this.bullets) {
 				if (this.testCollision(bullet, enemy)) {
-					bullet.doDestroy = true;
-					enemy.doDestroy = true;
+					bullet.destroy();
+					enemy.destroy();
 				}
 			}
 		}
@@ -49,14 +49,14 @@ export default class Game  {
 
 	removeDestroyedObjects() {
 		for (let i = this.bullets.length - 1; i >= 0; i--) {
-			if (this.bullets[i].doDestroy) {
-				this.bullets.splice(i, 1)[0].destroy();
+			if (this.bullets[i].destroyed) {
+				this.bullets.splice(i, 1);
 			}
 		}
 
 		for (let i = this.enemies.length - 1; i >= 0; i--) {
-			if (this.enemies[i].doDestroy) {
-				this.enemies.splice(i, 1)[0].destroy();
+			if (this.enemies[i].destroyed) {
+				this.enemies.splice(i, 1);
 			}
 		}
 	}

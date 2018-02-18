@@ -11,7 +11,7 @@ export default class Enemy extends MovingObject {
 	update() {
 		if (this.y >= constants.GAME.HEIGHT) {
 			// game over
-			this.doDestroy = true;
+			this.destroy();
 		} else {
 			this.y += this.step;
 			super.update();

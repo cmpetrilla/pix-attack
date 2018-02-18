@@ -8,7 +8,7 @@ export default class Bullet extends MovingObject {
 
 	update() {
 		if (this.y < 0) {
-			this.doDestroy = true;
+			this.destroy();
 		} else {
 			this.y -= this.step;
 			super.update();
