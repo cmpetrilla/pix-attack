@@ -21,7 +21,7 @@ export default class Game  {
 
 		this.setUpListeners();
 
-		this.stopGame = setInterval(this.draw.bind(this), SPEED);
+		this.gameLoop = setInterval(this.draw.bind(this), SPEED);
 	}
 
 	draw() {
@@ -45,7 +45,7 @@ export default class Game  {
 				this.lastEnemy = this.timestamp;
 			}
 		} else {
-			clearInterval(this.stopGame);
+			clearInterval(this.gameLoop);
 		}
 	}
 
