@@ -1,16 +1,17 @@
-import {SPEED, INPUTS, viewport, gamePieces} from './settings.js';
+import {SPEED, INPUTS, POINTS_PER_ENEMY, viewport, gamePieces, lives, score} from './settings.js';
 import Runner from './Runner.js';
 import Enemy from './Enemy.js';
 import Bullet from './Bullet.js';
 
 export default class Game  {
-	constructor(gameRoot) {
-		// Update game settings
-		let boundingClientRect = gameRoot.getBoundingClientRect();
-		viewport.rootDomElement = gameRoot;
+	constructor(gameNode, livesNode, scoreNode) {
+		// Initialize game settings
+		let boundingClientRect = gameNode.getBoundingClientRect();
+		viewport.domElement = gameNode;
 		viewport.height = boundingClientRect.height;
 		viewport.width = boundingClientRect.width;
-
+		lives.domElement = livesNode;
+		score.domElement = scoreNode;
 		gamePieces.runner = new Runner();
 
 		this.keysDown = [];
@@ -20,24 +21,40 @@ export default class Game  {
 
 		this.setUpListeners();
 
-		setInterval(this.draw.bind(this), SPEED);
+		this.stopGame = setInterval(this.draw.bind(this), SPEED);
 	}
 
 	draw() {
-		this.timestamp = new Date().getTime();
+		if (lives.value > 0) {
+			this.timestamp = new Date().getTime();
 
-		this.processKeys();
+			this.processKeys();
 
-		this.updateMovingObjects();
+			this.updateMovingObjects();
 
-		this.testCollisions();
+			this.testCollisions();
 
-		this.removeDestroyedObjects();
+			this.removeDestroyedObjects();
 
-		if (this.timestamp > this.lastEnemy + 2000) {
-			gamePieces.enemies.push(new Enemy());
-			this.lastEnemy = this.timestamp;
+			this.updateScore();
+
+			this.updateLives();
+
+			if (this.timestamp > this.lastEnemy + 2000) {
+				gamePieces.enemies.push(new Enemy());
+				this.lastEnemy = this.timestamp;
+			}
+		} else {
+			clearInterval(this.stopGame);
 		}
+	}
+
+	updateScore() {
+		score.domElement.innerText = score.value;
+	}
+
+	updateLives() {
+		lives.domElement.innerText = lives.value;
 	}
 
 	testCollisions() {
@@ -46,6 +63,7 @@ export default class Game  {
 				if (this.testCollision(bullet, enemy)) {
 					bullet.destroy();
 					enemy.destroy();
+					score.value += POINTS_PER_ENEMY;
 				}
 			}
 		}

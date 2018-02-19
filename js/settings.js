@@ -1,5 +1,7 @@
 export const SPEED = 60;
 
+export const POINTS_PER_ENEMY = 100;
+
 export const INPUTS = Object.freeze({
 	LEFT_ARROW: 37,
 	RIGHT_ARROW: 39,
@@ -29,7 +31,7 @@ export const ENEMY = Object.freeze({
 
 // Set these when initializing the game
 export let viewport = {
-	rootDomElement: {},
+	domElement: {},
 	width: 0,
 	height: 0
 };
@@ -38,4 +40,14 @@ export let gamePieces = {
 	runner: {},
 	enemies: [],
 	bullets: []
+};
+
+export let lives = {
+	domElement: {},
+	value: 3
+};
+
+export let score = {
+	domElement: {},
+	value: 0
 };

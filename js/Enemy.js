@@ -1,4 +1,4 @@
-import {ENEMY, viewport} from './settings.js';
+import {ENEMY, viewport, lives} from './settings.js';
 import MovingObject from './MovingObject.js';
 
 export default class Enemy extends MovingObject {
@@ -12,6 +12,7 @@ export default class Enemy extends MovingObject {
 		if (this.y >= viewport.height) {
 			// game over
 			this.destroy();
+			lives.value--;
 		} else {
 			this.y += this.step;
 			super.update();

@@ -24,7 +24,7 @@ export default class MovingObject {
 		svgNode.setAttribute('fill', this.color);
 		svgNode.setAttribute('id', this.id);
 
-		viewport.rootDomElement.appendChild(svgNode);
+		viewport.domElement.appendChild(svgNode);
 
 		this.domElement = document.getElementById(this.id);
 	}

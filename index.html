@@ -10,25 +10,33 @@
 		<script src="https://google.github.io/traceur-compiler/bin/traceur.js"></script>
 	</head>
 	<body class="o-flexbox">
-		<div class="c-instructions">
-			<header>
-				<h1 class="c-instructions__heading1 u-center">PIX ATTACK</h1>
-			</header>
-			<p class="c-instructions__text">Shoot the enemies before they reach you!</p>
-			<h2 class="c-instructions__heading2">Controls</h2>
-			<ul class="u-unstyled-list">
-				<li><span class="c-instructions__control-label u-center">&larr;</span> : move left</li>
-				<li><span class="c-instructions__control-label u-center">&rarr;</span> : move right</li>
-				<li><span class="c-instructions__control-label u-center">[space]</span> : shoot</li>
-			</ul>
+		<div class="c-sidebar o-flexbox u-flex-column u-justify-between">
+			<div>
+				<header>
+					<h1 class="c-sidebar__heading1 u-center">PIX ATTACK</h1>
+				</header>
+				<p class="c-sidebar__text">Shoot the enemies before they reach you!</p>
+				<h2 class="c-sidebar__heading2">Controls</h2>
+				<ul class="u-unstyled-list">
+					<li><span class="c-sidebar__control-label u-center">&larr;</span> : move left</li>
+					<li><span class="c-sidebar__control-label u-center">&rarr;</span> : move right</li>
+					<li><span class="c-sidebar__control-label u-center">[space]</span> : shoot</li>
+				</ul>
+			</div>
+			<div class="c-sidebar__info u-center">
+				<div>Lives: <span id="lives"></span></div>
+				<div>Score: <span id="score"></span></div>
+			</div>
 		</div>
 		<div class="c-game-container">
-			<svg id="gameRoot" class="c-game-root"></svg>
+			<svg id="game" class="c-game-root"></svg>
 		</div>
 		<script type="module">
 			import Game from './js/Game.js';
-			const gameRoot = document.getElementById('gameRoot');
-			new Game(gameRoot);
+			const gameNode = document.getElementById('game');
+			const livesNode = document.getElementById('lives');
+			const scoreNode = document.getElementById('score');
+			new Game(gameNode, livesNode, scoreNode);
 		</script>
 	</body>
 </html>
