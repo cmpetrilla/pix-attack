@@ -21,7 +21,7 @@ export default class Game  {
 
 		this.setUpListeners();
 
-		this.gameLoop = setInterval(this.draw.bind(this), SPEED);
+		this.gameLoop = setInterval(() => this.draw(), SPEED);
 	}
 
 	draw() {
