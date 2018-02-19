@@ -1,4 +1,4 @@
-import settings from './settings.js';
+import {viewport} from './settings.js';
 
 export default class MovingObject {
 	constructor(type, x, y, h, w, color, step) {
@@ -24,7 +24,7 @@ export default class MovingObject {
 		svgNode.setAttribute('fill', this.color);
 		svgNode.setAttribute('id', this.id);
 
-		settings.ROOT_ELEMENT.appendChild(svgNode);
+		viewport.rootDomElement.appendChild(svgNode);
 
 		this.domElement = document.getElementById(this.id);
 	}
@@ -38,4 +38,4 @@ export default class MovingObject {
 		this.domElement.remove();
 		this.destroyed = true;
 	}
-}
+};

@@ -1,9 +1,9 @@
-import settings from './settings.js';
+import {RUNNER, viewport} from './settings.js';
 import MovingObject from './MovingObject.js';
 
 export default class Runner extends MovingObject {
 	constructor() {
-		super('runner', 0, settings.GAME.HEIGHT - settings.RUNNER.HEIGHT, settings.RUNNER.HEIGHT, settings.RUNNER.WIDTH, settings.RUNNER.COLOR, settings.RUNNER.STEP);
+		super('runner', 0, viewport.height - RUNNER.HEIGHT, RUNNER.HEIGHT, RUNNER.WIDTH, RUNNER.COLOR, RUNNER.STEP);
 	}
 
 	stepLeft() {
@@ -19,10 +19,10 @@ export default class Runner extends MovingObject {
 	stepRight() {
 		this.x += this.step;
 
-		if (this.x + this.w > settings.GAME.WIDTH) {
-			this.x = settings.GAME.WIDTH - this.w;
+		if (this.x + this.w > viewport.width) {
+			this.x = viewport.width - this.w;
 		}
 
 		super.update();
 	}
-}
+};

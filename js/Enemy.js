@@ -1,15 +1,15 @@
-import settings from './settings.js';
+import {ENEMY, viewport} from './settings.js';
 import MovingObject from './MovingObject.js';
 
 export default class Enemy extends MovingObject {
 	constructor() {
-		let randomXPosition = Math.random() * (settings.GAME.WIDTH  - settings.ENEMY.WIDTH);
+		let randomXPosition = Math.random() * (viewport.width  - ENEMY.WIDTH);
 
-		super('enemy', randomXPosition, 0, settings.ENEMY.HEIGHT, settings.ENEMY.WIDTH, settings.ENEMY.COLOR, settings.ENEMY.STEP);
+		super('enemy', randomXPosition, 0, ENEMY.HEIGHT, ENEMY.WIDTH, ENEMY.COLOR, ENEMY.STEP);
 	}
 
 	update() {
-		if (this.y >= settings.GAME.HEIGHT) {
+		if (this.y >= viewport.height) {
 			// game over
 			this.destroy();
 		} else {
@@ -17,4 +17,4 @@ export default class Enemy extends MovingObject {
 			super.update();
 		}
 	}
-}
+};

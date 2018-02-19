@@ -1,5 +1,4 @@
-import settings from './settings.js';
-import gamePieces from './gamePieces.js';
+import {SPEED, INPUTS, viewport, gamePieces} from './settings.js';
 import Runner from './Runner.js';
 import Enemy from './Enemy.js';
 import Bullet from './Bullet.js';
@@ -8,9 +7,9 @@ export default class Game  {
 	constructor(gameRoot) {
 		// Update game settings
 		let boundingClientRect = gameRoot.getBoundingClientRect();
-		settings.ROOT_ELEMENT = gameRoot;
-		settings.GAME.HEIGHT = boundingClientRect.height;
-		settings.GAME.WIDTH = boundingClientRect.width;
+		viewport.rootDomElement = gameRoot;
+		viewport.height = boundingClientRect.height;
+		viewport.width = boundingClientRect.width;
 
 		gamePieces.runner = new Runner();
 
@@ -21,7 +20,7 @@ export default class Game  {
 
 		this.setUpListeners();
 
-		setInterval(this.draw.bind(this), settings.GAME.SPEED);
+		setInterval(this.draw.bind(this), SPEED);
 	}
 
 	draw() {
@@ -95,13 +94,13 @@ export default class Game  {
 	processKeys() {
 		for (let i = 0; i < this.keysDown.length; i++) {
 			switch (this.keysDown[i]) {
-				case settings.INPUTS.LEFT_ARROW:
+				case INPUTS.LEFT_ARROW:
 					gamePieces.runner.stepLeft();
 					break;
-				case settings.INPUTS.RIGHT_ARROW:
+				case INPUTS.RIGHT_ARROW:
 					gamePieces.runner.stepRight();
 					break;
-				case settings.INPUTS.SPACE:
+				case INPUTS.SPACE:
 					if (this.timestamp > this.lastBullet + 500) {
 						gamePieces.bullets.push(new Bullet());
 						this.lastBullet = this.timestamp;
@@ -123,4 +122,4 @@ export default class Game  {
 
 		return (x2 - w1 < x1 && x1 < x2 + w2 + w1) && (y1 < y2 + h2);
 	}
-}
+};
