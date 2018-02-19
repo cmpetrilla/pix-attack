@@ -58,6 +58,7 @@ export default class Game  {
 	}
 
 	testCollisions() {
+		// Iterate all enemies and bullets, check for collisions, and increment score when found
 		for (let enemy of gamePieces.enemies) {
 			for (let bullet of gamePieces.bullets) {
 				if (this.testCollision(bullet, enemy)) {
@@ -70,6 +71,7 @@ export default class Game  {
 	}
 
 	removeDestroyedObjects() {
+		// Iterate in reverse, so destroyed pieces can be removed easily
 		for (let i = gamePieces.bullets.length - 1; i >= 0; i--) {
 			if (gamePieces.bullets[i].destroyed) {
 				gamePieces.bullets.splice(i, 1);

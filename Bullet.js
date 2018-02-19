@@ -3,6 +3,7 @@ import MovingObject from './MovingObject.js';
 
 export default class Bullet extends MovingObject {
 	constructor() {
+		// Generate bullet in middle of runner's current position
 		super('bullet', gamePieces.runner.x + (gamePieces.runner.w / 2) - (BULLET.WIDTH / 2), gamePieces.runner.y - BULLET.HEIGHT, BULLET.HEIGHT, BULLET.WIDTH, BULLET.COLOR, BULLET.STEP);
 	}
 

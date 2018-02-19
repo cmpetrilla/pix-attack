@@ -3,6 +3,7 @@ import MovingObject from './MovingObject.js';
 
 export default class Enemy extends MovingObject {
 	constructor() {
+		// Generate enemy at random x position
 		let randomXPosition = Math.random() * (viewport.width  - ENEMY.WIDTH);
 
 		super('enemy', randomXPosition, 0, ENEMY.HEIGHT, ENEMY.WIDTH, ENEMY.COLOR, ENEMY.STEP);

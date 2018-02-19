@@ -35,6 +35,7 @@ export default class MovingObject {
 	}
 
 	destroy() {
+		// Remove from DOM, set as destroyed to be removed during main game loop
 		this.domElement.remove();
 		this.destroyed = true;
 	}

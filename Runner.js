@@ -3,6 +3,7 @@ import MovingObject from './MovingObject.js';
 
 export default class Runner extends MovingObject {
 	constructor() {
+		// Create runner at bottom of game viewport
 		super('runner', 0, viewport.height - RUNNER.HEIGHT, RUNNER.HEIGHT, RUNNER.WIDTH, RUNNER.COLOR, RUNNER.STEP);
 	}
 
