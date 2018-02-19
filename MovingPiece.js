@@ -1,6 +1,6 @@
 import {viewport} from './settings.js';
 
-export default class MovingObject {
+export default class MovingPiece {
 	constructor(type, x, y, h, w, color, step) {
 		this.x = x;
 		this.y = y;

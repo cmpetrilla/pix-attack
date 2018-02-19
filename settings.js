@@ -36,7 +36,7 @@ export let viewport = {
 	height: 0
 };
 
-export let gamePieces = {
+export let movingPieces = {
 	runner: {},
 	enemies: [],
 	bullets: []

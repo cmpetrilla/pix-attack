@@ -1,4 +1,4 @@
-import {SPEED, INPUTS, POINTS_PER_ENEMY, viewport, gamePieces, lives, score} from './settings.js';
+import {SPEED, INPUTS, POINTS_PER_ENEMY, viewport, movingPieces, lives, score} from './settings.js';
 import Runner from './Runner.js';
 import Enemy from './Enemy.js';
 import Bullet from './Bullet.js';
@@ -12,7 +12,7 @@ export default class Game  {
 		viewport.width = boundingClientRect.width;
 		lives.domElement = livesNode;
 		score.domElement = scoreNode;
-		gamePieces.runner = new Runner();
+		movingPieces.runner = new Runner();
 
 		this.keysDown = [];
 		this.lastBullet = 0;
@@ -30,18 +30,18 @@ export default class Game  {
 
 			this.processKeys();
 
-			this.updateMovingObjects();
+			this.updateMovingPieces();
 
 			this.testCollisions();
 
-			this.removeDestroyedObjects();
+			this.removeDestroyedMovingPieces();
 
 			this.updateScore();
 
 			this.updateLives();
 
 			if (this.timestamp > this.lastEnemy + 2000) {
-				gamePieces.enemies.push(new Enemy());
+				movingPieces.enemies.push(new Enemy());
 				this.lastEnemy = this.timestamp;
 			}
 		} else {
@@ -59,8 +59,8 @@ export default class Game  {
 
 	testCollisions() {
 		// Iterate all enemies and bullets, check for collisions, and increment score when found
-		for (let enemy of gamePieces.enemies) {
-			for (let bullet of gamePieces.bullets) {
+		for (let enemy of movingPieces.enemies) {
+			for (let bullet of movingPieces.bullets) {
 				if (this.testCollision(bullet, enemy)) {
 					bullet.destroy();
 					enemy.destroy();
@@ -70,29 +70,29 @@ export default class Game  {
 		}
 	}
 
-	removeDestroyedObjects() {
+	removeDestroyedMovingPieces() {
 		// Iterate in reverse, so destroyed pieces can be removed easily
-		for (let i = gamePieces.bullets.length - 1; i >= 0; i--) {
-			if (gamePieces.bullets[i].destroyed) {
-				gamePieces.bullets.splice(i, 1);
+		for (let i = movingPieces.bullets.length - 1; i >= 0; i--) {
+			if (movingPieces.bullets[i].destroyed) {
+				movingPieces.bullets.splice(i, 1);
 			}
 		}
 
-		for (let i = gamePieces.enemies.length - 1; i >= 0; i--) {
-			if (gamePieces.enemies[i].destroyed) {
-				gamePieces.enemies.splice(i, 1);
+		for (let i = movingPieces.enemies.length - 1; i >= 0; i--) {
+			if (movingPieces.enemies[i].destroyed) {
+				movingPieces.enemies.splice(i, 1);
 			}
 		}
 	}
 
-	updateMovingObjects() {
-		gamePieces.runner.update();
+	updateMovingPieces() {
+		movingPieces.runner.update();
 
-		for (let enemy of gamePieces.enemies) {
+		for (let enemy of movingPieces.enemies) {
 			enemy.update();
 		}
 
-		for (let bullet of gamePieces.bullets) {
+		for (let bullet of movingPieces.bullets) {
 			bullet.update();
 		}
 	}
@@ -117,14 +117,14 @@ export default class Game  {
 		for (let i = 0; i < this.keysDown.length; i++) {
 			switch (this.keysDown[i]) {
 				case INPUTS.LEFT_ARROW:
-					gamePieces.runner.stepLeft();
+					movingPieces.runner.stepLeft();
 					break;
 				case INPUTS.RIGHT_ARROW:
-					gamePieces.runner.stepRight();
+					movingPieces.runner.stepRight();
 					break;
 				case INPUTS.SPACE:
 					if (this.timestamp > this.lastBullet + 500) {
-						gamePieces.bullets.push(new Bullet());
+						movingPieces.bullets.push(new Bullet());
 						this.lastBullet = this.timestamp;
 					}
 					break;

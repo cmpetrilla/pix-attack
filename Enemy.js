@@ -1,7 +1,7 @@
 import {ENEMY, viewport, lives} from './settings.js';
-import MovingObject from './MovingObject.js';
+import MovingPiece from './MovingPiece.js';
 
-export default class Enemy extends MovingObject {
+export default class Enemy extends MovingPiece {
 	constructor() {
 		// Generate enemy at random x position
 		let randomXPosition = Math.random() * (viewport.width  - ENEMY.WIDTH);
