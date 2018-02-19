@@ -12,8 +12,6 @@ export default class Runner extends MovingObject {
 		if (this.x < 0) {
 			this.x = 0;
 		}
-
-		super.update();
 	}
 
 	stepRight() {
@@ -22,7 +20,5 @@ export default class Runner extends MovingObject {
 		if (this.x + this.w > viewport.width) {
 			this.x = viewport.width - this.w;
 		}
-
-		super.update();
 	}
 };

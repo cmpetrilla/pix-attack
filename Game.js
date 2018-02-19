@@ -84,6 +84,8 @@ export default class Game  {
 	}
 
 	updateMovingObjects() {
+		gamePieces.runner.update();
+
 		for (let enemy of gamePieces.enemies) {
 			enemy.update();
 		}
