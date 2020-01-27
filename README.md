@@ -31,7 +31,7 @@ Pix Attack uses the following classes. Descriptions of each are also provided.
 * Extends the `update` function of `MovingPiece` to make the element move on the screen
 
 ### `Enemy`
-* Randomy creates a new enemy on the x-axis
+* Randomly creates a new enemy on the x-axis
 * Extends the `update` function of `MovingPiece` similar to `Bullet`
 
 ## Settings
